@@ -1,4 +1,9 @@
 const axios = require('axios');
+const bcrypt = require("bcryptjs"); // added
+const jwt = require("jsonwebtoken"); // added
+const secrets = require("../config/secrets.js"); // added
+const Users = require("./routes-model.js"); // added
+
 
 const { authenticate } = require('../auth/authenticate');
 
@@ -10,6 +15,11 @@ module.exports = server => {
 
 function register(req, res) {
   // implement user registration
+
+
+
+
+  
 }
 
 function login(req, res) {
@@ -29,4 +39,19 @@ function getJokes(req, res) {
     .catch(err => {
       res.status(500).json({ message: 'Error Fetching Jokes', error: err });
     });
+}
+
+
+
+function generateToken (user) {
+  // ADD our JWT token, exp & iat are autimatically added
+  return jwt.sign({
+    userId: user.id,
+    name: user.username,
+    userRole: 'student',
+//   }, 'super secret',   // secret  CAN"T KEEP this in CODE, MUST move to .env
+  }, secrets.jwtSecret,
+    { expiresIn: '1h'},   // added expiration in 1 hour
+  )  
+
 }
