@@ -1,7 +1,7 @@
 import React from 'react';
 import { Fragment } from 'react';
 // import logo from './logo.svg';
-// import './App.css';
+import './App.css';
 
 import {Route, NavLink, withRouter} from 'react-router-dom';   // ADD HERE for route fun!
 import SignUp from './views/SignUp';
@@ -23,24 +23,47 @@ class App extends React.Component {
 
   render() {
     return (
-      <Fragment>
-        <h2> Sprint Authentication with JWT & Jokes  !</h2>
+      <div className = "App">
+      
+            <h2> Sprint Authentication with JWT & Jokes  !</h2>
+            <div className = "nav-container">
+                  <div className = "nav">
+                    <NavLink to = "/signup">Signup</NavLink>
+                    <NavLink to = "/login">Signin</NavLink>
+                    <NavLink to = "/jokes">Jokes</NavLink>
+                  </div>
+ 
+                  <button onClick={this.logout}>Logout</button>
+            </div>
 
-        <ul>
-          <li><NavLink to = "/signup">Signup</NavLink></li>
-          <li><NavLink to = "/login">Login</NavLink></li>
-          <li><NavLink to = "/jokes">Jokes</NavLink></li>
-          <li><button onClick={this.logout}>Logout</button></li>
-        
-        </ul>
+            <main>
+              <Route path = "/signup" component = {SignUp}/>
+              <Route path = "/login" component = {SignIn} />
+              <Route path = "/jokes" component = {Jokes}/>
+            </main>
+            <div
+            style={{
+              backgroundImage: "url(https://images.pexels.com/photos/50582/selfie-monkey-self-portrait-macaca-nigra-50582.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)",
+              backgroundPosition: 'center',
+             // backgroundSize: 'cover',
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              width: '90%',
+              margin: "5px auto",
+              position: "absolute",
+              zIndex : "-1",
+              top: "250px",
+              bottom: 0,
+              left: 0,
+              right: 0,
+      
+            }}>
+            </div>
+      
+      </div>
+      
 
 
-        <main>
-          <Route path = "/signup" component = {SignUp}/>
-          <Route path = "/login" component = {SignIn} />
-          <Route path = "/jokes" component = {Jokes}/>
-        </main>
-      </Fragment>
     );
   }  
 }

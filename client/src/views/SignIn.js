@@ -5,8 +5,8 @@ import api from '../helpers/api';
 
 class SignIn extends React.Component {
     state = {
-        username: '',
-        password: '',
+        username: 'groot',
+        password: 'iamgroot',
       };
 
 
