@@ -29,6 +29,7 @@
     "sqlite3": "^4.0.8"
   },
   "devDependencies": {
+    "create-react-app": "^3.0.1",
     "nodemon": "^1.19.1"
   }
 }
